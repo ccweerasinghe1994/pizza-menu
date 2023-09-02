@@ -45,5 +45,5 @@ export const CustomRouter = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<Provider store={store}>
 		<RouterProvider router={CustomRouter} />
-	</Provider>
+	</Provider>,
 );
