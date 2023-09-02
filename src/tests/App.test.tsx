@@ -23,10 +23,11 @@ describe('App', () => {
 						<Route path="/*" element={<NotFoundPage />} />
 					</Route>
 				</Routes>
-			</MemoryRouter>
+			</MemoryRouter>,
 		);
 
 		// verify navigation to "no match" route
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		expect(screen.getByText(/NOT FOUND/i)).toBeInTheDocument();
 
 		const user = userEvent.setup();
@@ -35,22 +36,25 @@ describe('App', () => {
 		await user.click(
 			screen.getByRole('link', {
 				name: 'About',
-			})
+			}),
 		);
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		expect(screen.getByText(/About Page/i)).toBeInTheDocument();
 
 		await user.click(
 			screen.getByRole('link', {
 				name: 'Login',
-			})
+			}),
 		);
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		expect(screen.getByText(/Login Page/i)).toBeInTheDocument();
 
 		await user.click(
 			screen.getByRole('link', {
 				name: 'Home',
-			})
+			}),
 		);
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		expect(screen.getByText(/Home Page/i)).toBeInTheDocument();
 	});
 });

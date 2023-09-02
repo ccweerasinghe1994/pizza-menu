@@ -6,13 +6,14 @@ import { Routes } from '../../main';
 const LinkRoutesStyles = classes('flex px-3 py-1 rounded bg-blue-200');
 const commonStyles = classes('px-3 py-1');
 const navLinkStyles = classes(
-	'flex justify-items-start gap-10 px-3 h-10 text-xl flex-wrap mb-3'
+	'flex justify-items-start gap-10 px-3 h-10 text-xl flex-wrap mb-3',
 );
 const Header: FC = () => {
 	const { pathname } = useLocation();
-	const isHome = pathname === Routes.Home || pathname === '/';
-	const isAbout = pathname === Routes.About;
-	const isLogin = pathname === Routes.Login;
+	const pathNameConverted = pathname as Routes;
+	const isHome = pathNameConverted === Routes.Home || pathname === '/';
+	const isAbout = pathNameConverted === Routes.About;
+	const isLogin = pathNameConverted === Routes.Login;
 
 	return (
 		<nav className={navLinkStyles}>
