@@ -21,7 +21,7 @@ export default defineConfig({
 		setupFiles: './src/setup.Tests.ts',
 		environment: 'jsdom',
 		coverage: {
-			provider: 'c8',
+			provider: 'v8',
 			extension: ['.ts', '.tsx'],
 			all: true,
 			// include: ['**/src/features/**'],
