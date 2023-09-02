@@ -22,6 +22,10 @@ export const CustomRouter = createBrowserRouter([
 		element: <App />,
 		children: [
 			{
+				path: '/',
+				element: <HomePage />,
+			},
+			{
 				path: Routes.Home,
 				element: <HomePage />,
 			},
@@ -45,5 +49,5 @@ export const CustomRouter = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<Provider store={store}>
 		<RouterProvider router={CustomRouter} />
-	</Provider>
+	</Provider>,
 );

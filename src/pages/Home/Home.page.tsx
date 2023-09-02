@@ -1,11 +1,8 @@
 import { FC } from 'react';
+import Menu from '../../Components/Menu/Menu';
 
 const HomePage: FC = () => {
-	return (
-		<>
-			<h1>Home Page</h1>
-		</>
-	);
+	return <Menu />;
 };
 
 export default HomePage;
