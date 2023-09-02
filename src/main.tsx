@@ -22,6 +22,10 @@ export const CustomRouter = createBrowserRouter([
 		element: <App />,
 		children: [
 			{
+				path: '/',
+				element: <HomePage />,
+			},
+			{
 				path: Routes.Home,
 				element: <HomePage />,
 			},
