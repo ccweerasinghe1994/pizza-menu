@@ -1,56 +1,35 @@
 import { FC } from 'react';
-import Image from '../../assets/margherita.jpg';
+import { z } from 'zod';
 
-// const pizzaData = [
-// 	{
-// 		name: 'Focaccia',
-// 		ingredients: 'Bread with italian olive oil and rosemary',
-// 		price: 6,
-// 		photoName: 'pizzas/focaccia.jpg',
-// 		soldOut: false,
-// 	},
-// 	{
-// 		name: 'Pizza Margherita',
-// 		ingredients: 'Tomato and mozarella',
-// 		price: 10,
-// 		photoName: 'pizzas/margherita.jpg',
-// 		soldOut: false,
-// 	},
-// 	{
-// 		name: 'Pizza Spinaci',
-// 		ingredients: 'Tomato, mozarella, spinach, and ricotta cheese',
-// 		price: 12,
-// 		photoName: 'pizzas/spinaci.jpg',
-// 		soldOut: false,
-// 	},
-// 	{
-// 		name: 'Pizza Funghi',
-// 		ingredients: 'Tomato, mozarella, mushrooms, and onion',
-// 		price: 12,
-// 		photoName: 'pizzas/funghi.jpg',
-// 		soldOut: false,
-// 	},
-// 	{
-// 		name: 'Pizza Salamino',
-// 		ingredients: 'Tomato, mozarella, and pepperoni',
-// 		price: 15,
-// 		photoName: 'pizzas/salamino.jpg',
-// 		soldOut: true,
-// 	},
-// 	{
-// 		name: 'Pizza Prosciutto',
-// 		ingredients: 'Tomato, mozarella, ham, aragula, and burrata cheese',
-// 		price: 18,
-// 		photoName: 'pizzas/prosciutto.jpg',
-// 		soldOut: false,
-// 	},
-// ];
-const Pizza: FC = () => {
+const PizzaScheme = z.object({
+	name: z.string(),
+	ingredients: z.string(),
+	imageUrl: z.string(),
+	price: z.number(),
+	soldOut: z.boolean(),
+});
+type PizzaT = z.infer<typeof PizzaScheme>;
+const Pizza: FC<PizzaT> = (props) => {
+	PizzaScheme.parse(props);
+	const { name, ingredients, imageUrl, price, soldOut } = props;
 	return (
-		<div>
-			<img src={Image} alt="pizza" />
-			<h2>Pizza Spinaci</h2>
-			<p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
+		<div className={'flex gap-[3.2rem]'}>
+			<img
+				className={`w-[12rem] aspect-square align-self-start ${
+					soldOut ? 'opacity-80 grayscale' : ''
+				}	`}
+				src={`/src/assets/` + imageUrl}
+				alt="pizza"
+			/>
+			<div className={'flex flex-col gap-[0.8rem] px-0 py-[0.4rem]'}>
+				<h3 className={'text-[2rem] font-normal'}>{name}</h3>
+				<p className={'text-[1.4rem] font-light italic mb-auto'}>
+					{ingredients}
+				</p>
+				<span className={'block text-[1.6rem]'}>
+					{soldOut ? 'SOLD OUT' : price}
+				</span>
+			</div>
 		</div>
 	);
 };
