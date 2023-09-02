@@ -18,7 +18,7 @@ const Pizza: FC<PizzaT> = (props) => {
 				className={`w-[12rem] aspect-square align-self-start ${
 					soldOut ? 'opacity-80 grayscale' : ''
 				}	`}
-				src={`/src/assets/` + imageUrl}
+				src={imageUrl}
 				alt="pizza"
 			/>
 			<div className={'flex flex-col gap-[0.8rem] px-0 py-[0.4rem]'}>
